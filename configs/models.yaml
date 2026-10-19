@@ -1,0 +1,53 @@
+# LLM endpoints. All providers use the OpenAI-compatible chat API.
+# API keys are never stored here: each entry names the environment variable
+# that holds its key (put it in .env or your shell / cloud environment).
+#
+# price_in / price_out: CNY per 1M tokens, used only for cost reporting.
+# Check the provider's current price list before quoting costs in the paper.
+
+defaults:
+  temperature: 0.0
+  max_tokens: 2048
+  timeout: 120
+
+models:
+  deepseek-flash:           # main experiment model: DeepSeek-V4.1-Flash-1017 (served as "deepseek-flash")
+    base_url: https://api.deepseek.com
+    model: deepseek-flash
+    api_key_env: DEEPSEEK_API_KEY
+    # thinking mode left at the API default for the Direct baseline;
+    # see deepseek-flash-thinking for the reasoning variant.
+    price_in: null          # fill in from DeepSeek's price page before reporting cost
+    price_out: null
+
+  deepseek-flash-thinking:  # same model with thinking enabled (sent as extra request fields)
+    base_url: https://api.deepseek.com
+    model: deepseek-flash
+    api_key_env: DEEPSEEK_API_KEY
+    max_tokens: 8192
+    extra_body:
+      thinking: {type: enabled}
+      reasoning_effort: high
+    price_in: null
+    price_out: null
+
+  deepseek-chat:            # legacy model name
+    base_url: https://api.deepseek.com
+    model: deepseek-chat
+    api_key_env: DEEPSEEK_API_KEY
+    price_in: null
+    price_out: null
+
+  qwen-coder-plus:          # Alibaba Cloud Bailian (DashScope) compatible mode
+    base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+    model: qwen-coder-plus
+    api_key_env: DASHSCOPE_API_KEY
+    price_in: 3.5
+    price_out: 7.0
+
+  qwen2.5-coder-7b-local:   # local Ollama, for the generality experiment
+    base_url: http://localhost:11434/v1
+    model: qwen2.5-coder:7b
+    api_key_env: OLLAMA_API_KEY   # any non-empty value works for Ollama
+    price_in: 0.0
+    price_out: 0.0

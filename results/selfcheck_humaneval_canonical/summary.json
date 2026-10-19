@@ -1,0 +1,675 @@
+{
+  "run": "selfcheck_humaneval_canonical",
+  "dataset": "humaneval",
+  "agent": "canonical",
+  "model": null,
+  "n_tasks": 164,
+  "n_generated": 164,
+  "pass@1_base": 100.0,
+  "pass@1_plus": 100.0,
+  "llm_calls": 0,
+  "avg_calls_per_task": 0.0,
+  "prompt_tokens": 0,
+  "completion_tokens": 0,
+  "avg_tokens_per_task": 0.0,
+  "evalplus_date": "2026-10-19 02:39",
+  "evalplus_hash": "fe585eb4df8c88d844eeb463ea4d0302",
+  "per_task": {
+    "HumanEval/0": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/1": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/2": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/3": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/4": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/5": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/6": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/7": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/8": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/9": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/10": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/11": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/12": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/13": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/14": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/15": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/16": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/17": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/18": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/19": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/20": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/21": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/22": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/23": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/24": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/25": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/26": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/27": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/28": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/29": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/30": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/31": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/32": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/33": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/34": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/35": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/36": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/37": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/38": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/39": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/40": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/41": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/42": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/43": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/44": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/45": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/46": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/47": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/48": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/49": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/50": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/51": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/52": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/53": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/54": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/55": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/56": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/57": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/58": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/59": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/60": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/61": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/62": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/63": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/64": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/65": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/66": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/67": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/68": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/69": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/70": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/71": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/72": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/73": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/74": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/75": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/76": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/77": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/78": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/79": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/80": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/81": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/82": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/83": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/84": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/85": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/86": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/87": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/88": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/89": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/90": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/91": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/92": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/93": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/94": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/95": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/96": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/97": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/98": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/99": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/100": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/101": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/102": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/103": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/104": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/105": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/106": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/107": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/108": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/109": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/110": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/111": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/112": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/113": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/114": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/115": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/116": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/117": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/118": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/119": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/120": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/121": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/122": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/123": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/124": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/125": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/126": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/127": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/128": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/129": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/130": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/131": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/132": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/133": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/134": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/135": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/136": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/137": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/138": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/139": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/140": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/141": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/142": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/143": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/144": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/145": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/146": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/147": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/148": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/149": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/150": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/151": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/152": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/153": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/154": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/155": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/156": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/157": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/158": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/159": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/160": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/161": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/162": {
+      "base": true,
+      "plus": true
+    },
+    "HumanEval/163": {
+      "base": true,
+      "plus": true
+    }
+  }
+}

@@ -1,0 +1,1531 @@
+{
+  "run": "selfcheck_mbpp_canonical",
+  "dataset": "mbpp",
+  "agent": "canonical",
+  "model": null,
+  "n_tasks": 378,
+  "n_generated": 378,
+  "pass@1_base": 99.74,
+  "pass@1_plus": 99.47,
+  "llm_calls": 0,
+  "avg_calls_per_task": 0.0,
+  "prompt_tokens": 0,
+  "completion_tokens": 0,
+  "avg_tokens_per_task": 0.0,
+  "evalplus_date": "2026-10-19 02:41",
+  "evalplus_hash": "ee43ecabebf20deef4bb776a405ac5b1",
+  "per_task": {
+    "Mbpp/2": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/3": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/4": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/6": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/7": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/8": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/9": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/11": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/12": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/14": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/16": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/17": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/18": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/19": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/20": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/56": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/57": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/58": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/59": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/61": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/62": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/63": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/64": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/65": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/66": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/67": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/68": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/69": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/70": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/71": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/72": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/74": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/75": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/77": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/79": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/80": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/82": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/84": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/85": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/86": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/87": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/88": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/89": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/90": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/91": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/92": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/93": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/94": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/95": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/96": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/97": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/98": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/99": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/100": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/101": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/102": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/103": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/104": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/105": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/106": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/108": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/109": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/111": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/113": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/116": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/118": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/119": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/120": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/123": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/124": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/125": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/126": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/127": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/128": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/129": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/130": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/131": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/132": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/133": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/135": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/137": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/138": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/139": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/140": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/141": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/142": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/145": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/160": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/161": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/162": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/165": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/166": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/167": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/168": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/170": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/171": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/172": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/222": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/223": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/224": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/226": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/227": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/230": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/232": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/233": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/234": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/235": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/237": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/238": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/239": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/240": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/242": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/244": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/245": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/247": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/250": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/251": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/252": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/253": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/255": {
+      "base": true,
+      "plus": false
+    },
+    "Mbpp/256": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/257": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/259": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/260": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/261": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/262": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/264": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/265": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/266": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/267": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/268": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/269": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/270": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/271": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/272": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/273": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/274": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/276": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/277": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/278": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/279": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/280": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/281": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/282": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/283": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/284": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/285": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/286": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/287": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/290": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/292": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/293": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/294": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/296": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/297": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/299": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/300": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/301": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/305": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/306": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/308": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/309": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/310": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/311": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/312": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/388": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/389": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/390": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/391": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/392": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/394": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/395": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/397": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/398": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/404": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/405": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/406": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/409": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/410": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/412": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/413": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/414": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/415": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/418": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/419": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/420": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/421": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/422": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/424": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/425": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/426": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/427": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/428": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/429": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/430": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/432": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/433": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/435": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/436": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/437": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/439": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/440": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/441": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/445": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/446": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/447": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/448": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/450": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/451": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/453": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/454": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/455": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/456": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/457": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/458": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/459": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/460": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/462": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/463": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/465": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/468": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/470": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/471": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/472": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/473": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/474": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/475": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/476": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/477": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/478": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/479": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/554": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/555": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/556": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/557": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/558": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/559": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/560": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/562": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/563": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/564": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/565": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/566": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/567": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/568": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/569": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/572": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/573": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/576": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/577": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/578": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/579": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/580": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/581": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/583": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/585": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/586": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/587": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/588": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/589": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/590": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/591": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/592": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/593": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/594": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/596": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/597": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/598": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/599": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/600": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/602": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/603": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/604": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/605": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/606": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/607": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/608": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/610": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/611": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/612": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/614": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/615": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/616": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/618": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/619": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/620": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/622": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/623": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/624": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/626": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/628": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/629": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/630": {
+      "base": false,
+      "plus": false
+    },
+    "Mbpp/631": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/632": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/633": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/635": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/637": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/638": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/639": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/641": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/643": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/644": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/720": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/721": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/722": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/723": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/724": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/725": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/726": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/728": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/730": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/731": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/732": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/733": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/734": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/735": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/736": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/737": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/739": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/740": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/741": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/742": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/743": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/744": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/745": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/748": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/749": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/750": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/751": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/752": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/753": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/754": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/755": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/757": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/758": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/759": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/760": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/762": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/763": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/764": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/765": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/766": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/767": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/769": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/770": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/771": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/772": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/773": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/775": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/777": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/778": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/780": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/781": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/782": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/784": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/785": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/786": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/787": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/788": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/790": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/791": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/792": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/793": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/794": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/796": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/797": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/798": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/799": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/800": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/801": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/803": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/804": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/805": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/806": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/807": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/808": {
+      "base": true,
+      "plus": true
+    },
+    "Mbpp/809": {
+      "base": true,
+      "plus": true
+    }
+  }
+}
