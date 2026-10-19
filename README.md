@@ -41,6 +41,7 @@ python -m hmas.bench.evaluate results/humaneval_direct_deepseek-flash
 - 数据集：EvalPlus 的 HumanEval+（164 题，v0.1.10）与 MBPP+（378 题，v0.2.0）。
 - 打分：官方 `evalplus.sanitize` + `evalplus.evaluate`，在断网 Docker 容器中执行。报告 base（原始测试）与 plus（加强测试）两个 pass@1。
 - 单智能体基线的提示词与 EvalPlus 官方 OpenAI 接口提示词逐字一致，温度 0（贪心），分数可以和 EvalPlus 排行榜对照。
+- 模型：DeepSeek-V4.1-Flash-1017（接口模型名 `deepseek-flash`，2026-10-19 测试；接口返回的 model 字段不含版本号，论文中按官方文档注明版本和测试日期）。该接口默认开启思考模式，所以每组实验都在 `configs/models.yaml` 里显式设置 `thinking.type`：`deepseek-flash` 为关闭，`deepseek-flash-thinking` 为开启。
 - 每题记录 LLM 调用次数、输入/输出 token、耗时，用于论文的成本/效率表。
 - 子集运行（`--limit`）只在所选题目上计分。
 

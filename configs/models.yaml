@@ -15,8 +15,10 @@ models:
     base_url: https://api.deepseek.com
     model: deepseek-flash
     api_key_env: DEEPSEEK_API_KEY
-    # thinking mode left at the API default for the Direct baseline;
-    # see deepseek-flash-thinking for the reasoning variant.
+    # The API turns thinking ON by default (checked 2026-10-19), so it is set
+    # explicitly: this entry is the non-thinking Direct baseline.
+    extra_body:
+      thinking: {type: disabled}
     price_in: null          # fill in from DeepSeek's price page before reporting cost
     price_out: null
 
