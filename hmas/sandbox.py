@@ -52,10 +52,13 @@ class DockerSandbox:
         """Run `cmd` in a fresh container. mounts: (host_path, container_path, "ro"|"rw")."""
         timeout = self.timeout if timeout is None else timeout
         name = f"hmas-{uuid.uuid4().hex[:12]}"
+        cpus = self.cpus if cpus is None else cpus  # 0 = no CPU limit
         args = ["docker", "run", "--rm", "--name", name, "--network", "none",
-                "--cpus", str(cpus or self.cpus), "--memory", memory or self.memory,
+                "--memory", memory or self.memory,
                 "--pids-limit", str(self.pids), "--security-opt", "no-new-privileges",
                 "--tmpfs", "/tmp:rw,size=256m", "-w", workdir]
+        if cpus:
+            args += ["--cpus", str(cpus)]
         if read_only:
             args.append("--read-only")
         if user:

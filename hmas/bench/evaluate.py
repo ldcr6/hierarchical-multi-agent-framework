@@ -88,7 +88,9 @@ def main(argv=None):
         for t in load_tasks(dataset):
             f.write(json.dumps({"task_id": t.task_id, "solution": samples.get(t.task_id, "")}) + "\n")
 
-    uid = f"{os.getuid()}:{os.getgid()}"
+    # Linux: run as the host user so files written to the mounts stay ours.
+    # Docker Desktop (Windows/macOS) maps mount ownership itself.
+    uid = f"{os.getuid()}:{os.getgid()}" if hasattr(os, "getuid") else None
     cmd = ["sh", "-c",
            "evalplus.sanitize --samples /work/samples.jsonl && "
            f"evalplus.evaluate --dataset {dataset} --samples /work/samples-sanitized.jsonl "
@@ -98,7 +100,7 @@ def main(argv=None):
         cmd,
         mounts=[(str(work), "/work", "rw"), (str(DATA_DIR), "/cache/evalplus", "rw")],
         env={"XDG_CACHE_HOME": "/cache", "HOME": "/tmp"},
-        timeout=args.timeout, cpus=float(os.cpu_count() or 2), memory="8g", user=uid,
+        timeout=args.timeout, cpus=0, memory="8g", user=uid,
     )
     (work / "evalplus.log").write_text(r.stdout + "\n" + r.stderr, encoding="utf-8")
     res_path = work / "samples-sanitized_eval_results.json"
