@@ -11,12 +11,32 @@ defaults:
   timeout: 120
 
 models:
-  deepseek-chat:            # DeepSeek-V3 series (non-reasoning)
+  deepseek-flash:           # main experiment model: DeepSeek-V4.1-Flash-1017 (served as "deepseek-flash")
+    base_url: https://api.deepseek.com
+    model: deepseek-flash
+    api_key_env: DEEPSEEK_API_KEY
+    # thinking mode left at the API default for the Direct baseline;
+    # see deepseek-flash-thinking for the reasoning variant.
+    price_in: null          # fill in from DeepSeek's price page before reporting cost
+    price_out: null
+
+  deepseek-flash-thinking:  # same model with thinking enabled (sent as extra request fields)
+    base_url: https://api.deepseek.com
+    model: deepseek-flash
+    api_key_env: DEEPSEEK_API_KEY
+    max_tokens: 8192
+    extra_body:
+      thinking: {type: enabled}
+      reasoning_effort: high
+    price_in: null
+    price_out: null
+
+  deepseek-chat:            # legacy model name
     base_url: https://api.deepseek.com
     model: deepseek-chat
     api_key_env: DEEPSEEK_API_KEY
-    price_in: 2.0
-    price_out: 8.0
+    price_in: null
+    price_out: null
 
   qwen-coder-plus:          # Alibaba Cloud Bailian (DashScope) compatible mode
     base_url: https://dashscope.aliyuncs.com/compatible-mode/v1

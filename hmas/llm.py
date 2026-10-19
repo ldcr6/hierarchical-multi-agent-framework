@@ -89,7 +89,8 @@ class LLMClient:
     def _key(self, messages, temperature, max_tokens, sample_index) -> str:
         blob = json.dumps(
             {"model": self.cfg.model, "base_url": self.cfg.base_url, "messages": messages,
-             "temperature": temperature, "max_tokens": max_tokens, "sample_index": sample_index},
+             "temperature": temperature, "max_tokens": max_tokens, "sample_index": sample_index,
+             "extra_body": self.cfg.extra_body},
             sort_keys=True, ensure_ascii=False,
         )
         return hashlib.sha256(blob.encode()).hexdigest()
@@ -123,6 +124,7 @@ class LLMClient:
                 r = self._client.chat.completions.create(
                     model=self.cfg.model, messages=messages,
                     temperature=temperature, max_tokens=max_tokens,
+                    extra_body=self.cfg.extra_body or None,
                 )
                 u = r.usage
                 return LLMResponse(

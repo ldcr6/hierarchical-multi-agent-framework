@@ -50,7 +50,8 @@ def summarize(run_dir: Path, eval_results: dict, meta: dict) -> dict:
         "evalplus_date": eval_results.get("date"), "evalplus_hash": eval_results.get("hash"),
     }
     if meta.get("model"):
-        summary["cost_cny"] = round(load_model(meta["model"]).cost(pt, ct), 4)
+        cost = load_model(meta["model"]).cost(pt, ct)
+        summary["cost_cny"] = None if cost is None else round(cost, 4)
     summary["per_task"] = per_task
     return summary
 

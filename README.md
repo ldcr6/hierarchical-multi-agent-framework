@@ -26,12 +26,12 @@ cp .env.example .env                     # 填入 DEEPSEEK_API_KEY（.env 不进
 python -m pytest                         # 14 个测试
 
 # 先在 20 题子集上试跑，确认无误再跑全量
-python -m hmas.bench.run --dataset humaneval --model deepseek-chat --limit 20
-python -m hmas.bench.evaluate results/humaneval_direct_deepseek-chat_n20
+python -m hmas.bench.run --dataset humaneval --model deepseek-flash --limit 20
+python -m hmas.bench.evaluate results/humaneval_direct_deepseek-flash_n20
 
 # 全量基线
-python -m hmas.bench.run --dataset humaneval --model deepseek-chat
-python -m hmas.bench.evaluate results/humaneval_direct_deepseek-chat
+python -m hmas.bench.run --dataset humaneval --model deepseek-flash
+python -m hmas.bench.evaluate results/humaneval_direct_deepseek-flash
 ```
 
 ## 评测口径（写论文时可直接引用）

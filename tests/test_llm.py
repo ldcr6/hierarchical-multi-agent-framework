@@ -31,3 +31,13 @@ def test_cache_and_usage(tmp_path, monkeypatch):
 def test_cost():
     cfg = ModelConfig(name="m", base_url="", model="m", api_key_env="X", price_in=2.0, price_out=8.0)
     assert cfg.cost(1_000_000, 500_000) == 6.0
+
+
+def test_unknown_price_gives_no_cost():
+    assert ModelConfig(name="m", base_url="", model="m", api_key_env="X").cost(1, 1) is None
+
+
+def test_model_entries_load():
+    from hmas.config import load_model
+    m = load_model("deepseek-flash-thinking")
+    assert m.model == "deepseek-flash" and m.extra_body["thinking"] == {"type": "enabled"}

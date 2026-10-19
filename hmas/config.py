@@ -32,8 +32,9 @@ class ModelConfig:
     temperature: float = 0.0
     max_tokens: int = 2048
     timeout: float = 120
-    price_in: float = 0.0   # CNY / 1M input tokens
-    price_out: float = 0.0  # CNY / 1M output tokens
+    price_in: float | None = None   # CNY / 1M input tokens (None = unknown)
+    price_out: float | None = None  # CNY / 1M output tokens
+    extra_body: dict | None = None  # provider-specific request fields (e.g. DeepSeek thinking mode)
 
     @property
     def api_key(self) -> str:
@@ -45,7 +46,9 @@ class ModelConfig:
             )
         return key
 
-    def cost(self, prompt_tokens: int, completion_tokens: int) -> float:
+    def cost(self, prompt_tokens: int, completion_tokens: int) -> float | None:
+        if self.price_in is None or self.price_out is None:
+            return None
         return (prompt_tokens * self.price_in + completion_tokens * self.price_out) / 1e6
 
 
