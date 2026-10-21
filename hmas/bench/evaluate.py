@@ -47,8 +47,18 @@ def summarize(run_dir: Path, eval_results: dict, meta: dict) -> dict:
         "pass@1_base": round(100 * base_ok / n, 2), "pass@1_plus": round(100 * plus_ok / n, 2),
         "llm_calls": calls, "avg_calls_per_task": round(calls / n, 3),
         "prompt_tokens": pt, "completion_tokens": ct, "avg_tokens_per_task": round((pt + ct) / n, 1),
+        "avg_wall_time": round(sum(records[t].get("wall_time", 0) for t in task_ids if t in records) / n, 2),
         "evalplus_date": eval_results.get("date"), "evalplus_hash": eval_results.get("hash"),
     }
+    # framework runs: where the tokens go (planner / coder / verifier)
+    by_role: dict[str, dict] = {}
+    for t in task_ids:
+        for role, u in (records.get(t, {}).get("extra") or {}).get("usage_by_role", {}).items():
+            agg = by_role.setdefault(role, {"calls": 0, "prompt_tokens": 0, "completion_tokens": 0})
+            for k in agg:
+                agg[k] += u.get(k, 0)
+    if by_role:
+        summary["usage_by_role"] = by_role
     if meta.get("model"):
         cost = load_model(meta["model"]).cost(pt, ct)
         summary["cost_cny"] = None if cost is None else round(cost, 4)
