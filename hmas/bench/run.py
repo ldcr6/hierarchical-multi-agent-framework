@@ -3,6 +3,7 @@
 Example:
     python -m hmas.bench.run --dataset humaneval --agent direct --model deepseek-chat
     python -m hmas.bench.run --dataset humaneval --agent direct --model deepseek-chat --limit 20
+    python -m hmas.bench.run --dataset humaneval --agent hmas-v0 --model deepseek-flash
 
 Writes results/<run_name>/ with:
     records.jsonl   one line per task: solution, usage, trace (resumable)
@@ -38,6 +39,16 @@ def build_agent(name: str, model: str | None):
     llm = LLMClient(load_model(model))
     if name == "direct":
         return DirectAgent(llm)
+    from ..framework.config import PRESETS
+
+    if name in PRESETS:
+        from ..framework.graph import HierarchicalAgent
+        from ..sandbox import DockerSandbox
+
+        sb = DockerSandbox(timeout=60)
+        if not (sb.available() and sb.image_exists()):
+            sys.exit(f"agent {name} runs tests in the Docker sandbox: start Docker and build {sb.image}")
+        return HierarchicalAgent(llm, PRESETS[name], sandbox=sb, name=name)
     sys.exit(f"unknown agent {name}")
 
 
@@ -82,7 +93,8 @@ def main(argv=None):
         try:
             res = agent.solve(task, args.dataset)
             rec = {"task_id": task.task_id, "solution": res.solution, "usage": res.usage.as_dict(),
-                   "wall_time": round(time.time() - t0, 3), "trace": res.trace, "error": None}
+                   "wall_time": round(time.time() - t0, 3), "trace": res.trace, "extra": res.extra,
+                   "error": None}
         except Exception as e:  # keep going; failed tasks are retried on the next run
             rec = {"task_id": task.task_id, "error": f"{type(e).__name__}: {e}"}
         return rec
@@ -109,10 +121,13 @@ def main(argv=None):
             f.write(json.dumps({"task_id": tid, "solution": done[tid]["solution"]}, ensure_ascii=False) + "\n")
     meta = {"dataset": args.dataset, "agent": args.agent, "model": args.model,
             "task_ids": [t.task_id for t in tasks], "created": time.strftime("%Y-%m-%d %H:%M:%S")}
+    if getattr(agent, "cfg", None) is not None:
+        meta["framework_config"] = agent.cfg.as_dict()
     if args.model:
         cfg = load_model(args.model)
         meta["model_config"] = {k: getattr(cfg, k) for k in
-                                ("model", "base_url", "temperature", "max_tokens", "price_in", "price_out")}
+                                ("model", "base_url", "temperature", "max_tokens", "price_in", "price_out",
+                                 "extra_body")}
     (out / "meta.json").write_text(json.dumps(meta, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"[run] wrote {out}/samples.jsonl ({len(order)}/{len(tasks)} tasks, {errors} errors)")
     return 1 if errors else 0

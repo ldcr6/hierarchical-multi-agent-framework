@@ -6,3 +6,5 @@ __pycache__/
 data/evalplus/*.jsonl
 data/evalplus/*.pkl
 results/*/eval/
+.cache*/
+hmas.egg-info/

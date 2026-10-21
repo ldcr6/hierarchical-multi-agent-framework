@@ -71,16 +71,18 @@ class DockerSandbox:
 
         t0 = time.time()
         try:
-            p = subprocess.run(args, capture_output=True, text=True, timeout=timeout)
+            # explicit UTF-8: on Chinese Windows the default (GBK) cannot decode every program output
+            p = subprocess.run(args, capture_output=True, text=True, encoding="utf-8", errors="replace",
+                               timeout=timeout)
             return ExecResult(p.returncode, p.stdout, p.stderr, False, time.time() - t0)
         except subprocess.TimeoutExpired as e:
             subprocess.run(["docker", "kill", name], capture_output=True)
-            out = e.stdout.decode() if isinstance(e.stdout, bytes) else (e.stdout or "")
-            err = e.stderr.decode() if isinstance(e.stderr, bytes) else (e.stderr or "")
+            out = e.stdout.decode("utf-8", "replace") if isinstance(e.stdout, bytes) else (e.stdout or "")
+            err = e.stderr.decode("utf-8", "replace") if isinstance(e.stderr, bytes) else (e.stderr or "")
             return ExecResult(-1, out, err, True, time.time() - t0)
 
     def run_python(self, code: str, *, stdin_files: dict[str, str] | None = None,
-                   timeout: float | None = None) -> ExecResult:
+                   timeout: float | None = None, args: list[str] = ()) -> ExecResult:
         """Execute a Python script (plus optional extra files) inside the sandbox."""
         with tempfile.TemporaryDirectory(prefix="hmas-") as d:
             Path(d, "main.py").write_text(code, encoding="utf-8")
@@ -89,4 +91,4 @@ class DockerSandbox:
             Path(d).chmod(0o755)
             for f in Path(d).iterdir():
                 f.chmod(0o644)
-            return self.run_cmd(["python", "main.py"], mounts=[(d, "/work", "ro")], timeout=timeout)
+            return self.run_cmd(["python", "main.py", *args], mounts=[(d, "/work", "ro")], timeout=timeout)

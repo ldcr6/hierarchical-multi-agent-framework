@@ -13,6 +13,7 @@ class AgentResult:
     solution: str                      # full program text (EvalPlus "solution" field)
     usage: Usage = field(default_factory=Usage)
     trace: list[dict] = field(default_factory=list)  # per-step log for analysis / case studies
+    extra: dict = field(default_factory=dict)         # method-specific statistics (e.g. usage per role)
 
 
 class Agent(Protocol):
