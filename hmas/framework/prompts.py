@@ -19,7 +19,9 @@ def problem_text(task: Task, dataset: str) -> str:
 CODE_RULES = (
     "Rules: write plain Python 3 with only the standard library; no tests, example usage, "
     "print statements or `if __name__ == \"__main__\"` blocks; every function must end with "
-    "an explicit `return` (no generator functions)."
+    "an explicit `return` (no generator functions). Do not add input validation, type checks or "
+    "raise exceptions unless the specification asks for them: assume the inputs are valid, and "
+    "return a sensible value for edge cases such as empty inputs."
 )
 
 CONFIDENCE_LINE = (
@@ -44,6 +46,7 @@ Problem:
 
 Requirements:
 - Give between 1 and {max_subtasks} helper functions. Each helper does one clear, testable job and is a pure function (inputs -> return value).
+- Do not create helpers that only validate or check the type of the inputs; assume the inputs are valid.
 - Helper names must be valid Python identifiers and must differ from `{task.entry_point}`.
 - `depends_on` lists other helpers (from this list) that the helper calls.
 - The entry function `{task.entry_point}` itself is NOT a helper; describe in `composition` how it combines the helpers.

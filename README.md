@@ -27,7 +27,7 @@ pip install -e ".[dev]"
 python scripts/download_data.py          # 下载 HumanEval+ v0.1.10、MBPP+ v0.2.0
 scripts/build_sandbox.sh                 # 构建沙箱镜像 hmas-sandbox:0.2
 cp .env.example .env                     # 填入 DEEPSEEK_API_KEY（.env 不进 git）
-python -m pytest                         # 28 个测试（Docker 不可用时跳过沙箱相关的）
+python -m pytest                         # 29 个测试（Docker 不可用时跳过沙箱相关的）
 
 # 先在 20 题子集上试跑，确认无误再跑全量
 python -m hmas.bench.run --dataset humaneval --model deepseek-flash --limit 20
@@ -69,7 +69,7 @@ plan -> code -> verify --(通过 / 修复次数用完 / 预算用完)--> advance
 1. **Planner** 一次调用，把题目拆成 1–5 个辅助函数（名字、签名、说明、依赖），并给整题和每个子任务打 1–5 级难度分（即 κ，v0 只记录不使用）。
 2. **Coder** 按依赖顺序逐个实现辅助函数，再用已验证的辅助函数组合出入口函数（根节点）。每次实现都附带自评置信度（即 ĉ，v0 只记录不使用）。
 3. **Verifier** 对每个节点做 L2 验证：L1 静态检查（语法、函数名、参数个数、每个函数有 `return`）+ 在 Docker 沙箱里跑测试。测试来自两处：题面里的示例（HumanEval+ 的 doctest 和 `f(x) => y` 式样例，MBPP+ 的 assert），以及 Verifier **只看需求、不看代码**写出的单元测试。
-4. 失败则把失败用例和实际输出交给 Coder 修复，最多 2 次；每个节点保留得分最高的版本（题面示例优先，其次生成测试，同分取最早的）。根节点修复可以改任何函数。
+4. 失败则把失败用例和实际输出交给 Coder 修复，最多 2 次；每次修复针对最新版本，修复结果与之前某个版本相同就提前停止。每个节点保留得分最高的版本（题面示例优先，其次生成测试，同分取最早的）。根节点修复可以改任何函数。
 5. 隐藏测试（EvalPlus 的 base/plus 测试）只在最后打分时使用，框架运行中从不接触。
 
 ```bash
@@ -80,6 +80,8 @@ python -m hmas.bench.evaluate results/humaneval_hmas-v0_deepseek-flash_n20
 ```
 
 每题的 `records.jsonl` 里额外记录：各角色（planner/coder/verifier）的调用次数和 token、每个节点的难度分、置信度、首稿是否通过、最终版本来源。`summary.json` 增加 `usage_by_role` 和 `avg_wall_time`，可直接用于“验证成本占比”等表格。超参数见 `hmas/framework/config.py`（与《框架形式化定义 v1》的符号对应）。
+
+首轮结果（提交 15bd475，2026-10-21，deepseek-flash，不开思考，温度 0）：HumanEval+ base 95.73 / plus 85.37，MBPP+ base 96.03 / plus 69.05，均低于 Direct 基线（HumanEval+ 90.85、MBPP+ 79.63 plus）。主要原因是生成代码主动拒绝边界输入（类型检查、对空输入抛异常）。之后的提交改了提示词（不做输入校验）、修复方式和一个崩溃问题，所以 15bd475 的结果要用那个提交复现；重跑时用新的 `--run-name`，否则 run.py 会续用旧的 records。
 
 已知题面问题：HumanEval/47 的 docstring 示例本身是错的（写的 15.0，正确答案 8.0），所有方法看到的是同一段题面，不做特殊处理。
 

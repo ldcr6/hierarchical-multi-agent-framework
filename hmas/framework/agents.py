@@ -63,7 +63,9 @@ class Run:
         for h in self.helpers:
             if h is upto:
                 break
-            if h.final is None:
+            # a helper whose best version still does not parse is left out (Mbpp/245: the
+            # first draft was cut off at max_tokens and both repairs had syntax errors)
+            if h.final is None or not parse_ok(h.final.code)[0]:
                 continue
             imp, body = split_code(h.final.code)
             imports += imp
@@ -124,7 +126,8 @@ class Coder(_Role):
         if not ok:
             return code
         imports, parts = run.done_helpers_code() if drop_helpers else (list(run.base_imports), [])
-        drop = {h.name for h in run.helpers} if drop_helpers else set()
+        drop = ({h.name for h in run.helpers if h.final is not None and parse_ok(h.final.code)[0]}
+                if drop_helpers else set())
         imp, body = split_code(code, drop_defs=drop)
         return assemble(parts + body, imports + imp)
 

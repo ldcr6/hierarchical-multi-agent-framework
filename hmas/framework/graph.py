@@ -4,8 +4,9 @@
                        ^  \\--(failed)--> repair --/                         \\--(done)--> finalize
 
 Nodes are solved bottom-up: helpers in dependency order, then the entry function
-(the root), which is composed from the verified helpers. Each node keeps every
-candidate it produced; the best-scoring one (earliest on ties) is kept.
+(the root), which is composed from the verified helpers. Each repair works on the
+latest version and stops early when it reproduces an earlier one. Each node keeps
+every candidate it produced; the best-scoring one (earliest on ties) is kept.
 
 v0 = fixed decomposition (one level of helpers for every problem) and fixed
 verification (the same level for every node). The dynamic depth (W3) and the
@@ -51,14 +52,20 @@ def build_graph(planner: Planner, coder: Coder, verifier: Verifier):
     def route_after_verify(s: State) -> str:
         run = s["run"]
         node = run.nodes[s["cursor"]]
-        if node.candidates[-1].passed or s["repairs"] >= run.cfg.max_repairs or run.over_budget():
+        last = node.candidates[-1]
+        if last.passed or s["repairs"] >= run.cfg.max_repairs or run.over_budget():
+            return "advance"
+        # a repair that reproduced an earlier version would get the same prompt again
+        if any(c.code == last.code for c in node.candidates[:-1]):
             return "advance"
         return "repair"
 
     def repair(s: State):
         run = s["run"]
         node = run.nodes[s["cursor"]]
-        node.candidates.append(coder.repair(run, node, node.best()))
+        # repair the latest version with its own failures (self-debugging); the final pick
+        # is still the best-scoring version, so a worse repair is never kept
+        node.candidates.append(coder.repair(run, node, node.candidates[-1]))
         return {"repairs": s["repairs"] + 1}
 
     def advance(s: State):

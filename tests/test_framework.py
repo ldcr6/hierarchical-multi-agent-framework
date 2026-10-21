@@ -258,3 +258,29 @@ def test_root_repair_returns_only_entry_function():
     ns = {}
     exec(res.solution, ns)
     assert ns["add_then_double"](2, 3) == 10
+
+
+def test_unparsable_helper_does_not_crash_the_root():
+    """Mbpp/245: a helper whose every version has a syntax error must not crash composing the root."""
+    class BrokenHelper(ScriptedLLM):
+        def chat(self, messages, usage=None, **kw):
+            user = messages[-1]["content"]
+            if ("Implement this helper" in user or "Helper function:" in user) and "`def add(a, b)`" in user:
+                out = "```python\ndef add(a, b:\n    return a +\n```"   # cut off / broken every time
+            elif "Write the entry function" in user:
+                out = ("```python\ndef add(a, b):\n    return a + b\n\n"
+                       "def add_then_double(a, b):\n    return double(add(a, b))\n```")
+            else:
+                return super().chat(messages, usage, **kw)
+            r = LLMResponse(out, 1, 1, 0.0)
+            usage.add(r)
+            return r
+
+    res = HierarchicalAgent(BrokenHelper(), FrameworkConfig(), sandbox=runner()).solve(TASK, "humaneval")
+    nodes = {n["name"]: n for n in res.extra["nodes"]}
+    assert nodes["add"]["final_passed"] is False
+    # identical broken repairs stop early: implement + 1 repair, not 2
+    assert nodes["add"]["attempts"] == 2
+    ns = {}
+    exec(res.solution, ns)   # the root's own `add` is kept because the helper version was unusable
+    assert ns["add_then_double"](2, 3) == 10
