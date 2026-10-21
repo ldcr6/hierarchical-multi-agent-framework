@@ -137,6 +137,9 @@ def split_code(code: str, drop_defs: set[str] = frozenset()) -> tuple[list[str],
 
 def merge_programs(old: str, new: str, imports: list[str] = ()) -> str:
     """Replace `old`'s top-level definitions by same-named ones from `new`; keep the rest, add new ones."""
+    if not parse_ok(old)[0]:
+        imp, body = split_code(new)
+        return assemble(body, list(imports) + imp)
     def named_parts(code: str) -> tuple[list[str], list[tuple[str | None, str]]]:
         imp, body = split_code(code)
         out = []

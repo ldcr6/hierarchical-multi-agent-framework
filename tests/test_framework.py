@@ -284,3 +284,30 @@ def test_unparsable_helper_does_not_crash_the_root():
     ns = {}
     exec(res.solution, ns)   # the root's own `add` is kept because the helper version was unusable
     assert ns["add_then_double"](2, 3) == 10
+
+
+def test_root_repair_after_unparsable_repair():
+    """HumanEval/47 (dcf739a run): the first root repair was prose, not code; the next repair must not crash."""
+    class ArguingRepair(ScriptedLLM):
+        repairs = 0
+
+        def chat(self, messages, usage=None, **kw):
+            user = messages[-1]["content"]
+            if "Current program:" in user:
+                ArguingRepair.repairs += 1
+                out = ("Wait - let me reconsider: the test looks wrong." if ArguingRepair.repairs == 1 else
+                       "```python\ndef add_then_double(a, b):\n    return double(add(a, b))\n```")
+            elif "Write the entry function" in user:
+                out = "```python\ndef add_then_double(a, b):\n    return add(a, b)\n```"
+            else:
+                return super().chat(messages, usage, **kw)
+            r = LLMResponse(out, 1, 1, 0.0)
+            usage.add(r)
+            return r
+
+    res = HierarchicalAgent(ArguingRepair(), FrameworkConfig(), sandbox=runner()).solve(TASK, "humaneval")
+    root = res.extra["nodes"][-1]
+    assert root["attempts"] == 3 and root["final_passed"] and root["final_origin"] == "repair-2"
+    ns = {}
+    exec(res.solution, ns)
+    assert ns["add_then_double"](2, 3) == 10

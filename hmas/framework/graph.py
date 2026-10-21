@@ -24,6 +24,7 @@ from ..llm import LLMClient
 from ..sandbox import DockerSandbox
 from .agents import Coder, Planner, Run, Verifier
 from .config import FrameworkConfig
+from .program import parse_ok
 
 
 class State(TypedDict):
@@ -64,8 +65,12 @@ def build_graph(planner: Planner, coder: Coder, verifier: Verifier):
         run = s["run"]
         node = run.nodes[s["cursor"]]
         # repair the latest version with its own failures (self-debugging); the final pick
-        # is still the best-scoring version, so a worse repair is never kept
-        node.candidates.append(coder.repair(run, node, node.candidates[-1]))
+        # is still the best-scoring version, so a worse repair is never kept. A latest
+        # version that does not even parse (e.g. the model argued with a test instead of
+        # writing code) is no basis for a repair: fall back to the best version.
+        last = node.candidates[-1]
+        base = last if parse_ok(last.code)[0] else node.best()
+        node.candidates.append(coder.repair(run, node, base))
         return {"repairs": s["repairs"] + 1}
 
     def advance(s: State):
