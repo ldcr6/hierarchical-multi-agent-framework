@@ -4,6 +4,7 @@ The sandbox is replaced by a local subprocess runner so the control flow can be
 tested without Docker; the test programs here are our own, never model output.
 """
 import json
+import signal
 import subprocess
 import sys
 import tempfile
@@ -33,6 +34,22 @@ class LocalRunner:
             p = subprocess.run([sys.executable, "main.py", *args], cwd=d, capture_output=True, text=True,
                                timeout=timeout)
             return ExecResult(p.returncode, p.stdout, p.stderr, False, 0.0)
+
+
+# The harness limits each test with SIGALRM, which only exists on Unix. Windows hosts
+# run these tests through the real Docker sandbox instead (the harness always runs
+# inside a Linux container in real runs).
+HAS_ALARM = hasattr(signal, "SIGALRM")
+
+
+def runner():
+    if HAS_ALARM:
+        return LocalRunner()
+    from hmas.sandbox import DockerSandbox
+    sb = DockerSandbox(timeout=60)
+    if not (sb.available() and sb.image_exists()):
+        pytest.skip("no SIGALRM on this host and Docker sandbox not available")
+    return sb
 
 
 TASK = Task("HumanEval/x", 'def add_then_double(a, b):\n    """Return 2 * (a + b).\n'
@@ -82,7 +99,7 @@ class ScriptedLLM:
 
 def test_full_loop_repairs_buggy_helper():
     llm = ScriptedLLM()
-    agent = HierarchicalAgent(llm, FrameworkConfig(), sandbox=LocalRunner())
+    agent = HierarchicalAgent(llm, FrameworkConfig(), sandbox=runner())
     res = agent.solve(TASK, "humaneval")
 
     ns = {}
@@ -108,7 +125,7 @@ def test_full_loop_repairs_buggy_helper():
 def test_level_zero_skips_verification():
     llm = ScriptedLLM()
     cfg = FrameworkConfig(leaf_level=0, root_level=0)
-    res = HierarchicalAgent(llm, cfg, sandbox=LocalRunner()).solve(TASK, "humaneval")
+    res = HierarchicalAgent(llm, cfg, sandbox=runner()).solve(TASK, "humaneval")
     assert res.extra["usage_by_role"]["verifier"]["calls"] == 0
     assert res.usage.calls == 4  # plan + 2 helpers + compose, no repair (buggy add kept)
 
@@ -126,7 +143,7 @@ def test_bad_plan_falls_back_to_single_node():
                 return r
             return super().chat(messages, usage, **kw)
 
-    res = HierarchicalAgent(NoPlan(), FrameworkConfig(), sandbox=LocalRunner()).solve(TASK, "humaneval")
+    res = HierarchicalAgent(NoPlan(), FrameworkConfig(), sandbox=runner()).solve(TASK, "humaneval")
     assert res.extra["n_helpers"] == 0 and res.extra["plan_problems"]
     assert "return 2 * (a + b)" in res.solution
 
@@ -167,11 +184,11 @@ def test_harness_reports_values_and_errors():
     prog = "def f(x):\n    if x == 3:\n        raise ValueError('three')\n    return x * 2\n"
     tests = ["assert f(1) == 2", "assert f(2) == 5", "assert f(3) == 6", "assert f(0.1) == 0.2",
              "assert isinstance(f(1), int)"]
-    rep = run_tests(LocalRunner(), prog, tests)
+    rep = run_tests(runner(), prog, tests)
     assert [r["ok"] for r in rep.results] == [True, False, False, True, True]
     assert rep.results[1]["error"] == "expected 5, got 4"
     assert "ValueError" in rep.results[2]["error"]
-    bad = run_tests(LocalRunner(), "def f(:\n", tests)
+    bad = run_tests(runner(), "def f(:\n", tests)
     assert bad.load_error and not bad.ok
 
 
@@ -191,6 +208,7 @@ KNOWN_WRONG_EXAMPLES = {"HumanEval/47"}
 
 
 @pytest.mark.skipif(not dataset_path("humaneval").exists(), reason="dataset not downloaded")
+@pytest.mark.skipif(not HAS_ALARM, reason="needs SIGALRM (one sandbox container per task would be too slow)")
 @pytest.mark.parametrize("ds", ["humaneval", "mbpp"])
 def test_visible_tests_pass_reference_solutions(ds):
     """Every extracted visible test must pass on the reference solution (reference code is trusted)."""
@@ -200,7 +218,7 @@ def test_visible_tests_pass_reference_solutions(ds):
         if not tests or t.task_id in KNOWN_WRONG_EXAMPLES:
             continue
         prog = t.prompt + t.canonical_solution if ds == "humaneval" else t.canonical_solution
-        rep = run_tests(LocalRunner(), prog, tests, per_test=10)
+        rep = run_tests(runner(), prog, tests, per_test=10)
         if not rep.ok:
             bad.append((t.task_id, rep.load_error, [r for r in rep.results if not r["ok"]][:2]))
     assert not bad, bad
@@ -234,7 +252,7 @@ def test_root_repair_returns_only_entry_function():
             usage.add(r)
             return r
 
-    res = HierarchicalAgent(BuggyRoot(), FrameworkConfig(), sandbox=LocalRunner()).solve(TASK, "humaneval")
+    res = HierarchicalAgent(BuggyRoot(), FrameworkConfig(), sandbox=runner()).solve(TASK, "humaneval")
     root = res.extra["nodes"][-1]
     assert root["first_passed"] is False and root["final_passed"] and root["final_origin"] == "repair-1"
     ns = {}
