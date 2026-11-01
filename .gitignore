@@ -8,3 +8,5 @@ data/evalplus/*.pkl
 results/*/eval/
 .cache*/
 hmas.egg-info/
+results/webapp_runs/
+node_modules/

@@ -85,6 +85,22 @@ python -m hmas.bench.evaluate results/humaneval_hmas-v0_deepseek-flash_n20
 
 已知题面问题：HumanEval/47 的 docstring 示例本身是错的（写的 15.0，正确答案 8.0），所有方法看到的是同一段题面，不做特殊处理。
 
+## 演示系统（开题答辩用，`webapp/`）
+
+FastAPI 后端 + Vue 3 / Element Plus 页面，把三层框架 v0 包成一个可交互的系统：提交题目 → 实时查看 Planner 的任务分解树、每一步的模型调用、每个代码版本在沙箱里的测试结果、修复过程、最终代码和资源消耗。框架核心代码不改动，后端直接调用 `hmas.framework`。
+
+```bash
+pip install -e ".[web]"
+python -m webapp                 # 打开 http://127.0.0.1:8000 （Windows 可双击 scripts\start_demo.bat）
+```
+
+- **离线演示**：内置两道示例（HumanEval/39 prime_fib、一道中文自然语言需求），模型回复来自 `webapp/examples.py` 里的脚本，不联网、不花钱；除模型以外的流程（解析计划、静态检查、沙箱测试、修复循环、选版本）都是真实框架代码。prime_fib 的 `is_prime` 首稿故意有错，用来演示“验证失败 → 修复”。
+- **真实模型**：可以输入自定义题目（函数签名 + 文档字符串，或自然语言描述 + 入口函数名），调用 `configs/models.yaml` 里的模型，需要 `.env` 里的密钥，页面上要勾选确认付费。同一题重复运行命中 `.cache/` 缓存，不再计费，所以答辩前把要演示的题跑一遍，现场就是秒出且免费。
+- **验收测试**（可选）：框架运行时看不到，只在最后用来检验最终代码，相当于隐藏测试。
+- 生成代码只在 Docker 沙箱里执行，需要先启动 Docker Desktop 并构建 `hmas-sandbox:0.2`。没有 Docker 的 Linux/macOS 开发机上，离线演示会退回本地进程执行脚本代码（不隔离，仅开发用）。
+- 运行记录保存在 `results/webapp_runs/`（不进 git）。
+- 页面源码在 `webapp/frontend/`，构建好的页面已放在 `webapp/static/`，运行不需要 Node.js；改页面时 `cd webapp/frontend && npm install && npm run build`（开发时 `npm run dev`，地址 http://localhost:5173）。
+
 ## 许可证
 
 GPL-3.0，见 [LICENSE](LICENSE)。
