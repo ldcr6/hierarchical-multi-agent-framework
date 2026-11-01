@@ -1,0 +1,57 @@
+body { margin: 0; background: #f4f6fa; font-family: "PingFang SC", "Microsoft YaHei", -apple-system, sans-serif; color: #1f2329; }
+.page { min-height: 100vh; }
+.header { display: flex; align-items: center; justify-content: space-between; background: #1d3a6e; color: #fff; height: 56px; }
+.title { font-size: 17px; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+.title .logo { background: #fff; color: #1d3a6e; border-radius: 4px; padding: 2px 8px; font-weight: 800; letter-spacing: 1px; }
+.title .sub { font-size: 12px; font-weight: 400; opacity: .75; }
+.env { display: flex; gap: 8px; }
+.block { margin-bottom: 16px; }
+.block .el-card__header { padding: 10px 16px; }
+.mono, .mono textarea, .mono input { font-family: "JetBrains Mono", Consolas, "Courier New", monospace !important; font-size: 12.5px; }
+.code { background: #0f172a; color: #e2e8f0; padding: 10px 12px; border-radius: 6px; overflow: auto; max-height: 420px;
+        font-family: "JetBrains Mono", Consolas, monospace; font-size: 12.5px; line-height: 1.5; margin: 0; white-space: pre; }
+.code.small { font-size: 11.5px; max-height: 260px; margin-top: 6px; }
+.hint { color: #8a919f; font-size: 12.5px; font-weight: 400; }
+.mt { margin-top: 12px; }
+.q { vertical-align: middle; margin-left: 4px; color: #8a919f; cursor: help; }
+.run-btn { width: 100%; margin-top: 14px; height: 40px; font-size: 15px; }
+.hist { padding: 8px 10px; border-radius: 6px; cursor: pointer; border: 1px solid transparent; }
+.hist:hover { background: #f0f4fb; }
+.hist.active { border-color: #409eff; background: #ecf5ff; }
+.hist-title { font-size: 13px; margin-bottom: 4px; }
+.hist-meta { display: flex; gap: 10px; align-items: center; color: #8a919f; font-size: 12px; flex-wrap: wrap; }
+.run-title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+.welcome ol { line-height: 2; }
+.tree { display: flex; flex-direction: column; align-items: center; }
+.tnode { border: 2px solid #dcdfe6; border-radius: 8px; padding: 8px 10px; background: #fff; cursor: pointer; width: 100%; box-sizing: border-box; transition: all .2s; }
+.tnode.root { width: 70%; text-align: center; }
+.tnode.passed { border-color: #67c23a; background: #f3faf0; }
+.tnode.failed { border-color: #f56c6c; background: #fef2f2; }
+.tnode.running { border-color: #409eff; background: #ecf5ff; box-shadow: 0 0 0 3px rgba(64,158,255,.18); }
+.tnode.sel { outline: 2px dashed #1d3a6e; outline-offset: 2px; }
+.tname { font-weight: 600; font-size: 13.5px; word-break: break-all; }
+.badge { font-size: 11px; background: #1d3a6e; color: #fff; border-radius: 3px; padding: 1px 6px; margin-left: 4px; font-weight: 400; }
+.tdesc { font-size: 12px; color: #606266; margin-top: 3px; }
+.tmeta { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #8a919f; margin-top: 4px; justify-content: space-between; }
+.tnode.root .tmeta { justify-content: center; }
+.children { position: relative; width: 100%; margin-top: 18px; display: flex; flex-direction: column; gap: 10px;
+            border-left: 2px solid #c0c4cc; padding-left: 14px; box-sizing: border-box; }
+.children::before { content: ""; position: absolute; top: -18px; left: 50%; height: 18px; border-left: 2px solid #c0c4cc; }
+.compose { font-size: 12.5px; color: #606266; margin-top: 12px; width: 100%; }
+.timeline-box { max-height: 520px; overflow: auto; padding: 4px 6px 0 2px; }
+.tl-text { font-size: 13px; cursor: pointer; }
+.fails { color: #c45656; font-size: 11.5px; margin-top: 3px; }
+.resp summary { cursor: pointer; color: #409eff; font-size: 12px; margin-top: 3px; }
+.spin .el-timeline-item__icon { animation: rot 1s linear infinite; }
+@keyframes rot { to { transform: rotate(360deg); } }
+.ok { color: #529b2e; font-weight: 600; }
+.bad { color: #c45656; }
+.score { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 13px; }
+.sub-title { margin: 12px 0 6px; font-size: 13px; }
+.share { margin-top: 10px; }
+.share-row { display: flex; align-items: center; gap: 8px; font-size: 12px; margin-bottom: 4px; }
+.share-row span { width: 60px; }
+.role { display: inline-block; font-size: 11px; border-radius: 3px; padding: 0 6px; margin-right: 6px; color: #fff; background: #909399; }
+.role.planner { background: #7b4fd6; }
+.role.coder { background: #2f7de1; }
+.role.verifier { background: #e08a1e; }
